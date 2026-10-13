@@ -1,304 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07110d">
-  <meta name="description" content="BEAST CONNECT — chat, calls, social links and connectivity in one place.">
-  <title>BEAST CONNECT</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="topbar">
-  <button id="menuBtn" class="icon-btn" aria-label="Open menu">☰</button>
-  <div class="brand">
-    <span class="brand-icon">🦁</span>
-    <div>
-      <h1>BEAST CONNECT</h1>
-      <small>One Number. One Connection.</small>
-    </div>
-  </div>
-  <button id="notificationBtn" class="icon-btn" aria-label="Notifications">
-    🔔<span id="notificationDot" class="notification-dot"></span>
-  </button>
-</header>
-
-<div id="drawerBackdrop" class="drawer-backdrop"></div>
-<aside id="drawer" class="drawer">
-  <div class="drawer-brand">🦁 BEAST CONNECT</div>
-  <div id="drawerIdentity" class="drawer-identity">Your BEAST account</div>
-  <button data-go="home">🏠 Home</button>
-  <button data-go="chat">💬 Chat</button>
-  <button data-go="calls">📞 Calls</button>
-  <button data-go="discover">🌐 Discover</button>
-  <button data-go="premium">👑 Premium</button>
-  <button data-go="profile">👤 My Profile</button>
-  <button data-go="notifications">🔔 Notifications</button>
-  <button data-go="settings">⚙️ Settings</button>
-  <button id="logoutBtn" class="logout-btn">🚪 Log out</button>
-</aside>
-
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07110d"><title>BEAST CONNECT</title>
+<link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+</head><body>
+<header class="topbar"><button id="menuBtn" class="icon" aria-label="Menu">☰</button><div class="brand">🦁 <div><b>BEAST CONNECT</b><small>One Number. One Connection.</small></div></div><button id="notificationBtn" class="icon" aria-label="Notifications">🔔<i id="notificationDot"></i></button></header>
+<div id="drawerBackdrop" class="backdrop"></div><aside id="drawer" class="drawer"><h3>🦁 BEAST CONNECT</h3><p id="drawerIdentity">Your account</p>
+<button data-go="home">🏠 Home</button><button data-go="chat">💬 Chat</button><button data-go="calls">📞 Calls</button><button data-go="discover">🌐 Discover</button><button data-go="premium">👑 Premium</button><button data-go="profile">👤 Profile</button><button data-go="notifications">🔔 Notifications</button><button data-go="settings">⚙️ Settings</button><button id="logoutBtn">🚪 Log out</button></aside>
 <main>
-  <section id="registerScreen" class="register-screen">
-    <div class="register-card">
-      <div class="big-logo">🦁</div>
-      <p class="eyebrow">WELCOME TO YOUR CONNECTED WORLD</p>
-      <h2>Create your BEAST account</h2>
-      <p class="muted">One account for messaging, calls, social links and more.</p>
-
-      <label for="registerName">Full name</label>
-      <input id="registerName" type="text" placeholder="Enter your full name" autocomplete="name">
-
-      <label for="registerPhone">Phone number</label>
-      <input id="registerPhone" type="tel" placeholder="07XXXXXXXX" autocomplete="tel">
-
-      <label for="registerPin">Create a 4-digit demo PIN</label>
-      <input id="registerPin" type="password" inputmode="numeric" maxlength="4" placeholder="••••">
-
-      <button id="registerBtn" class="primary-btn">Create Account →</button>
-      <p class="tiny-note">Prototype only: your account is stored on this device. This does not create a real phone number or verified account.</p>
-    </div>
-  </section>
-
-  <div id="appContent" class="app-content hidden">
-    <section id="home" class="screen active">
-      <div class="welcome-row">
-        <div>
-          <p class="eyebrow">YOUR CONNECTED WORLD</p>
-          <h2>Hey, <span id="greeting">BEAST</span> 👋</h2>
-          <p class="muted">Everything you need, in one place.</p>
-        </div>
-        <div id="homeAvatar" class="avatar">🦁</div>
-      </div>
-
-      <div class="beast-number-card">
-        <div>
-          <p class="eyebrow">YOUR BEAST NUMBER</p>
-          <h2 id="homeBeastNumber">BST-000000</h2>
-          <p id="homeUserName">Your account</p>
-        </div>
-        <button id="copyNumberBtn" class="light-btn">Copy</button>
-      </div>
-
-      <div class="section-heading">
-        <h3>Quick access</h3>
-        <span>Explore BEAST</span>
-      </div>
-
-      <div class="quick-grid">
-        <button class="quick-card" data-go="chat"><span>💬</span><b>Messages</b><small>Chat</small></button>
-        <button class="quick-card" data-go="calls"><span>📹</span><b>Calls</b><small>Voice & video</small></button>
-        <button class="quick-card" data-go="discover"><span>🌐</span><b>Internet</b><small>Explore</small></button>
-        <button class="quick-card" data-go="premium"><span>👑</span><b>Premium</b><small>KES 250/month</small></button>
-        <button class="quick-card" data-go="profile"><span>👤</span><b>My profile</b><small>Your identity</small></button>
-        <button class="quick-card" data-go="settings"><span>⚙️</span><b>Settings</b><small>Manage app</small></button>
-      </div>
-
-      <div class="info-card">
-        <h3>🚀 The BEAST vision</h3>
-        <p>Chat with BEAST users, explore your favourite platforms and prepare for connected services as they become available.</p>
-      </div>
-    </section>
-
-    <section id="chat" class="screen">
-      <div class="page-heading">
-        <p class="eyebrow">STAY CONNECTED</p>
-        <h2>💬 Messages</h2>
-        <p class="muted">Start a conversation using a BEAST number.</p>
-      </div>
-
-      <div class="panel">
-        <label for="contactSearch">BEAST number or phone</label>
-        <input id="contactSearch" type="text" placeholder="e.g. BST-100001 or 07XXXXXXXX">
-        <button id="searchContactBtn" class="primary-btn">Find contact</button>
-        <div id="contactSearchResult" class="result-box">Search for a contact to begin.</div>
-      </div>
-
-      <div class="chat-panel">
-        <div class="chat-header">
-          <div class="avatar small-avatar">💬</div>
-          <div><b id="chatContactName">BEAST Chat</b><small>Prototype conversation</small></div>
-        </div>
-        <div id="chatWindow" class="chat-window">
-          <div class="empty-state">Your conversation will appear here.</div>
-        </div>
-        <form id="chatForm" class="chat-form">
-          <input id="chatMessage" type="text" placeholder="Write a message..." autocomplete="off">
-          <button type="submit" aria-label="Send message">➤</button>
-        </form>
-      </div>
-      <p class="tiny-note">Demo messages are stored locally on this device. Live messaging between different users requires a secure backend.</p>
-    </section>
-
-    <section id="calls" class="screen">
-      <div class="page-heading">
-        <p class="eyebrow">HEAR AND SEE YOUR PEOPLE</p>
-        <h2>📞 Calls</h2>
-        <p class="muted">Call features are shown as a prototype.</p>
-      </div>
-
-      <div class="panel">
-        <label for="callNumber">BEAST number or phone</label>
-        <input id="callNumber" type="text" placeholder="Enter contact number">
-        <div class="call-buttons">
-          <button id="voiceCallBtn" class="primary-btn">📞 Voice call</button>
-          <button id="videoCallBtn" class="secondary-btn">📹 Video call</button>
-        </div>
-        <div id="callStatus" class="result-box">Ready for a demo call.</div>
-      </div>
-
-      <div class="info-card">
-        <h3>📡 Real calls</h3>
-        <p>Live internet calls need calling infrastructure and internet access. Ordinary mobile calls and SMS require an authorised telecom provider and applicable charges.</p>
-      </div>
-    </section>
-
-    <section id="discover" class="screen">
-      <div class="page-heading">
-        <p class="eyebrow">YOUR INTERNET HUB</p>
-        <h2>🌐 Discover</h2>
-        <p class="muted">Open search engines and your favourite platforms.</p>
-      </div>
-
-      <div class="panel">
-        <label for="webSearch">Search the web</label>
-        <input id="webSearch" type="search" placeholder="What do you want to find?">
-        <button id="googleSearchBtn" class="primary-btn">🔎 Search Google</button>
-      </div>
-
-      <div class="section-heading"><h3>Social platforms</h3></div>
-      <div class="platform-grid">
-        <a href="https://www.whatsapp.com/" target="_blank" rel="noopener noreferrer"><span>🟢</span>WhatsApp ↗</a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><span>🔵</span>Facebook ↗</a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><span>📸</span>Instagram ↗</a>
-        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer"><span>🎵</span>TikTok ↗</a>
-        <a href="https://web.telegram.org/" target="_blank" rel="noopener noreferrer"><span>✈️</span>Telegram ↗</a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><span>▶️</span>YouTube ↗</a>
-      </div>
-
-      <div class="section-heading"><h3>Gaming</h3></div>
-      <div class="platform-grid">
-        <a href="https://poki.com/" target="_blank" rel="noopener noreferrer"><span>🎮</span>Poki Games ↗</a>
-        <a href="https://www.crazygames.com/" target="_blank" rel="noopener noreferrer"><span>🕹️</span>CrazyGames ↗</a>
-      </div>
-
-      <div class="info-card">
-        <h3>🔐 About VPN and internet</h3>
-        <p>These links open external services. A VPN can help protect or route a connection, but it does not provide free mobile data by itself. A paid connectivity package requires a legitimate network or data provider.</p>
-      </div>
-    </section>
-
-    <section id="premium" class="screen">
-      <div class="premium-hero">
-        <div class="premium-crown">👑</div>
-        <p class="eyebrow">UPGRADE YOUR EXPERIENCE</p>
-        <h2>BEAST Premium</h2>
-        <div class="price">KES 250 <span>/ month</span></div>
-        <p>One subscription concept for the growing BEAST ecosystem.</p>
-      </div>
-
-      <div class="panel">
-        <h3>Premium plan</h3>
-        <ul class="feature-list">
-          <li>✓ BEAST account and profile</li>
-          <li>✓ Access to supported communication features</li>
-          <li>✓ Social and web shortcuts</li>
-          <li>✓ Future connected BEAST services</li>
-        </ul>
-        <div id="subscriptionStatus" class="result-box">Premium is not activated.</div>
-        <button id="subscribeBtn" class="primary-btn">Try Premium Demo</button>
-        <p class="tiny-note">This button does not charge money. Real subscriptions require secure payment processing, account verification and a backend to manage renewals.</p>
-      </div>
-    </section>
-
-    <section id="profile" class="screen">
-      <div class="page-heading">
-        <p class="eyebrow">YOUR BEAST IDENTITY</p>
-        <h2>👤 My Profile</h2>
-      </div>
-
-      <div class="profile-card">
-        <div id="profileBigAvatar" class="profile-avatar">🦁</div>
-        <h2 id="profileName">Your name</h2>
-        <p id="profilePhone" class="muted">Your phone</p>
-        <div id="profileBeastNumber" class="profile-number">BST-000000</div>
-        <button id="copyProfileNumber" class="secondary-btn">Copy BEAST number</button>
-      </div>
-
-      <div class="panel">
-        <h3>Social profile links</h3>
-        <label for="profileWhatsapp">WhatsApp link or number</label>
-        <input id="profileWhatsapp" type="text" placeholder="WhatsApp contact">
-
-        <label for="profileInstagram">Instagram profile URL</label>
-        <input id="profileInstagram" type="url" placeholder="https://instagram.com/username">
-
-        <label for="profileFacebook">Facebook profile URL</label>
-        <input id="profileFacebook" type="url" placeholder="https://facebook.com/username">
-
-        <label for="profileTiktok">TikTok profile URL</label>
-        <input id="profileTiktok" type="url" placeholder="https://tiktok.com/@username">
-
-        <div class="toggle-row">
-          <div><b>Public profile</b><small>Allow this demo profile to be marked public.</small></div>
-          <button id="publicProfileToggle" class="toggle" type="button" aria-label="Toggle public profile"></button>
-        </div>
-
-        <button id="saveProfileBtn" class="primary-btn">Save profile</button>
-        <div id="publicProfileResult" class="result-box">Your profile settings appear here.</div>
-      </div>
-    </section>
-
-    <section id="notifications" class="screen">
-      <div class="page-heading">
-        <p class="eyebrow">STAY INFORMED</p>
-        <h2>🔔 Notifications</h2>
-      </div>
-      <div id="notificationList" class="notification-list">
-        <div class="empty-state">No notifications yet.</div>
-      </div>
-    </section>
-
-    <section id="settings" class="screen">
-      <div class="page-heading">
-        <p class="eyebrow">MAKE IT YOURS</p>
-        <h2>⚙️ Settings</h2>
-      </div>
-
-      <div class="panel settings-panel">
-        <div class="setting-row">
-          <div><b>Dark appearance</b><small>Use the BEAST dark theme.</small></div>
-          <button id="themeToggle" class="toggle on" type="button" aria-label="Toggle dark appearance"></button>
-        </div>
-        <div class="setting-row">
-          <div><b>Notifications</b><small>Control demo notification indicators.</small></div>
-          <button id="notificationsToggle" class="toggle on" type="button" aria-label="Toggle notifications"></button>
-        </div>
-        <div class="setting-row">
-          <div><b>Public profile</b><small>Manage your profile visibility setting.</small></div>
-          <button id="settingsPublicToggle" class="toggle" type="button" aria-label="Toggle public profile"></button>
-        </div>
-      </div>
-
-      <div class="info-card warning-card">
-        <h3>🔒 Account safety</h3>
-        <p>Use a unique PIN. This prototype stores demo data in your browser and is not suitable for real financial or sensitive communications.</p>
-      </div>
-      <button id="logoutBtnSettings" class="secondary-btn">Log out</button>
-    </section>
-  </div>
-</main>
-
-<nav id="bottomNav" class="bottom-nav hidden">
-  <button data-screen="home" class="active"><span>🏠</span><small>Home</small></button>
-  <button data-screen="chat"><span>💬</span><small>Chat</small></button>
-  <button data-screen="calls"><span>📞</span><small>Calls</small></button>
-  <button data-screen="discover"><span>🌐</span><small>Discover</small></button>
-  <button data-screen="profile"><span>👤</span><small>Profile</small></button>
-</nav>
-
+<section id="registerScreen" class="register"><form id="registerForm" class="card register-card"><div class="logo">🦁</div><p class="eyebrow">WELCOME TO YOUR CONNECTED WORLD</p><h2>Create your BEAST account</h2><p class="muted">Messaging, calls, social links and more.</p>
+<label for="registerName">Full name</label><input id="registerName" required maxlength="60" autocomplete="name" placeholder="Your full name">
+<label for="registerPhone">Kenyan phone number</label><input id="registerPhone" required autocomplete="tel" placeholder="0712345678 or +254712345678">
+<label for="registerPin">Create a 4-digit demo PIN</label><input id="registerPin" required type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="4 digits">
+<button id="registerBtn" class="primary" type="submit">Create Account →</button><p class="tiny">Prototype only. Account is saved in this browser; the BEAST number is not a real mobile number.</p></form></section>
+<div id="appContent" class="hidden">
+<section id="home" class="screen active"><div class="welcome"><div><p class="eyebrow">YOUR CONNECTED WORLD</p><h2>Hey, <span id="greeting">BEAST</span> 👋</h2><p class="muted">Everything you need in one place.</p></div><div id="homeAvatar" class="avatar">🦁</div></div>
+<div class="number-card"><div><p class="eyebrow">YOUR BEAST NUMBER</p><h2 id="homeBeastNumber">BST-000000</h2><p id="homeUserName">Your account</p></div><button id="copyNumberBtn" class="light">Copy</button></div>
+<div class="section-title"><h3>Quick access</h3><span>Explore BEAST</span></div><div class="grid">
+<button class="tile" data-go="chat"><span>💬</span><b>Messages</b><small>Chat</small></button><button class="tile" data-go="calls"><span>📹</span><b>Calls</b><small>Voice &amp; video</small></button><button class="tile" data-go="discover"><span>🌐</span><b>Internet</b><small>Explore</small></button><button class="tile" data-go="premium"><span>👑</span><b>Premium</b><small>KES 250/month</small></button><button class="tile" data-go="profile"><span>👤</span><b>My profile</b><small>Your identity</small></button><button class="tile" data-go="settings"><span>⚙️</span><b>Settings</b><small>Manage app</small></button></div>
+<div class="panel"><h3>🚀 The BEAST vision</h3><p>Chat with BEAST users, explore favourite platforms and prepare for connected services as they become available.</p></div></section>
+<section id="chat" class="screen"><p class="eyebrow">STAY CONNECTED</p><h2>💬 Messages</h2><p class="muted">Local demo conversation.</p><div class="panel"><label for="contactSearch">BEAST number or phone</label><input id="contactSearch" placeholder="BST-100001 or 07XXXXXXXX"><button id="searchContactBtn" class="primary">Find contact</button><div id="contactSearchResult" class="result">Choose a demo contact to begin.</div></div>
+<div class="chat panel"><div class="chat-head"><b id="chatContactName">BEAST Chat</b><small>Prototype conversation</small></div><div id="chatWindow" class="chat-window"><div class="empty">Your conversation will appear here.</div></div><form id="chatForm" class="chat-form"><input id="chatMessage" placeholder="Write a message..." maxlength="1000"><button type="submit">➤</button></form></div><p class="tiny">Messages are stored only on this device. Live messaging requires a secure backend.</p></section>
+<section id="calls" class="screen"><p class="eyebrow">HEAR AND SEE YOUR PEOPLE</p><h2>📞 Calls</h2><div class="panel"><label for="callNumber">BEAST number or phone</label><input id="callNumber" placeholder="Enter contact number"><div class="two"><button id="voiceCallBtn" class="primary">📞 Voice call</button><button id="videoCallBtn" class="secondary">📹 Video call</button></div><div id="callStatus" class="result">Ready for a demo call.</div></div><div class="panel"><h3>📡 Real calls and SMS</h3><p>Live calls need calling infrastructure. Ordinary mobile calls and SMS require an authorised telecom provider and may cost money.</p></div></section>
+<section id="discover" class="screen"><p class="eyebrow">YOUR INTERNET HUB</p><h2>🌐 Discover</h2><div class="panel"><label for="webSearch">Search the web</label><input id="webSearch" type="search" placeholder="What do you want to find?"><button id="googleSearchBtn" class="primary">🔎 Search Google</button></div>
+<div class="section-title"><h3>Social platforms</h3></div><div class="platforms"><a href="https://www.whatsapp.com/" target="_blank" rel="noopener">🟢 WhatsApp ↗</a><a href="https://www.facebook.com/" target="_blank" rel="noopener">🔵 Facebook ↗</a><a href="https://www.instagram.com/" target="_blank" rel="noopener">📸 Instagram ↗</a><a href="https://www.tiktok.com/" target="_blank" rel="noopener">🎵 TikTok ↗</a><a href="https://web.telegram.org/" target="_blank" rel="noopener">✈️ Telegram ↗</a><a href="https://www.youtube.com/" target="_blank" rel="noopener">▶️ YouTube ↗</a><a href="https://poki.com/" target="_blank" rel="noopener">🎮 Poki Games ↗</a><a href="https://www.crazygames.com/" target="_blank" rel="noopener">🕹️ CrazyGames ↗</a></div><div class="panel"><h3>🔐 VPN and internet</h3><p>A VPN does not provide free internet by itself. A paid connectivity package needs a legitimate network or data provider.</p></div></section>
+<section id="premium" class="screen"><div class="premium"><div class="crown">👑</div><p class="eyebrow">UPGRADE YOUR EXPERIENCE</p><h2>BEAST Premium</h2><div class="price">KES 250 <small>/ month</small></div><p>One subscription concept for the BEAST ecosystem.</p></div><div class="panel"><h3>Premium plan</h3><ul><li>BEAST account and profile</li><li>Supported communication features as they launch</li><li>Social and web shortcuts</li><li>Future connected services</li></ul><div id="subscriptionStatus" class="result">Premium is not activated.</div><button id="subscribeBtn" class="primary">Try Premium Demo</button><p class="tiny">No payment is taken. Real subscriptions require payment processing and a backend.</p></div></section>
+<section id="profile" class="screen"><p class="eyebrow">YOUR BEAST IDENTITY</p><h2>👤 My Profile</h2><div class="profile"><div id="profileBigAvatar" class="profile-avatar">🦁</div><h2 id="profileName">Your name</h2><p id="profilePhone" class="muted">Your phone</p><div id="profileBeastNumber" class="profile-number">BST-000000</div><button id="copyProfileNumber" class="secondary">Copy BEAST number</button></div>
+<div class="panel"><h3>Social profile links</h3><label for="profileWhatsapp">WhatsApp link or number</label><input id="profileWhatsapp" placeholder="WhatsApp contact"><label for="profileInstagram">Instagram profile URL</label><input id="profileInstagram" type="url" placeholder="https://instagram.com/username"><label for="profileFacebook">Facebook profile URL</label><input id="profileFacebook" type="url" placeholder="https://facebook.com/username"><label for="profileTiktok">TikTok profile URL</label><input id="profileTiktok" type="url" placeholder="https://tiktok.com/@username"><div class="setting-row"><div><b>Public profile</b><small>Mark this demo profile public.</small></div><button id="publicProfileToggle" class="toggle" aria-pressed="false"></button></div><button id="saveProfileBtn" class="primary">Save profile</button><div id="publicProfileResult" class="result">Profile settings appear here.</div></div></section>
+<section id="notifications" class="screen"><p class="eyebrow">STAY INFORMED</p><h2>🔔 Notifications</h2><div id="notificationList" class="notifications"><div class="empty">No notifications yet.</div></div></section>
+<section id="settings" class="screen"><p class="eyebrow">MAKE IT YOURS</p><h2>⚙️ Settings</h2><div class="panel"><div class="setting-row"><div><b>Dark appearance</b><small>Use the BEAST dark theme.</small></div><button id="themeToggle" class="toggle on" aria-pressed="true"></button></div><div class="setting-row"><div><b>Notifications</b><small>Control demo notifications.</small></div><button id="notificationsToggle" class="toggle on" aria-pressed="true"></button></div><div class="setting-row"><div><b>Public profile</b><small>Manage profile visibility.</small></div><button id="settingsPublicToggle" class="toggle" aria-pressed="false"></button></div></div><div class="panel warning"><h3>🔒 Account safety</h3><p>This prototype stores demo data in your browser and is not suitable for real payments or sensitive communications.</p></div><button id="logoutBtnSettings" class="secondary">Log out</button></section>
+</div></main>
+<nav id="bottomNav" class="bottom-nav hidden"><button data-screen="home" class="active"><span>🏠</span><small>Home</small></button><button data-screen="chat"><span>💬</span><small>Chat</small></button><button data-screen="calls"><span>📞</span><small>Calls</small></button><button data-screen="discover"><span>🌐</span><small>Discover</small></button><button data-screen="profile"><span>👤</span><small>Profile</small></button></nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="app.js"></script>
-</body>
-</html>
+</body></html>
